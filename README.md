@@ -1,5 +1,7 @@
 # Sign Me Mario
 
+Our Website is focused around the creating of petitions and signing them, you must have an account registered in order to sign a particular petition, once you sign you cannot unsign so you have to be careful of what you agree to sign and what not.
+
 Made by [Hala](https://github.com/halakhamis07) and [George](https://github.com/Iz1cK)
 
 ### DB SCHEME
