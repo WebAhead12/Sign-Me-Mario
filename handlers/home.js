@@ -8,7 +8,7 @@ const get = (req, res) => {
 const all = (req, res) => {
   db.query(
     `
-    SELECT users.name,petitions.title,petitions.content 
+    SELECT users.name,petition_id,petitions.title,petitions.content 
      FROM users 
      INNER JOIN petitions 
      ON users.id = petitions.user_id;
