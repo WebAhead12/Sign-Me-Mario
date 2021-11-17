@@ -20,7 +20,7 @@ router.use(express.static(path.join(__dirname, "front-end", "create")));
 
 router.get("/p/:petition_id", verifyToken,handlers.petition.get);
 router.get("/petition", verifyToken,handlers.petition.showURL);
-router.post("/sign-petition/:petition_id",verifyToken,handlers.petition.sign);
+router.post("/sign-petition",verifyToken,handlers.petition.sign);
 router.use(express.static(path.join(__dirname, "front-end", "petition")));
 
 router.get("/authenticate", handlers.authenticate.showHTML);

@@ -1,6 +1,8 @@
 const data = new URLSearchParams(window.location.href.split("?")[1]);
 const id = data.get("id");
 const petition = document.querySelector(".petition");
+const petitionId = document.getElementById("petition_id");
+
 
 fetch(`/p/${id}`)
   .then((response) => {
@@ -8,6 +10,7 @@ fetch(`/p/${id}`)
     return response.json();
   })
   .then((json) => {
+    petitionId.value = id;
     console.log(json);
     const objArray = json;
     for (let obj of objArray) {

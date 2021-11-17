@@ -21,14 +21,14 @@ const showURL = (req, res) => {
 };
 
 const sign = (req, res) => {
-  const petition_id = req.params.petition_id;
-  console.log(req.params);
+  const petition_id = req.body.petition_id;
+  console.log("Pettion id: " + req.body.petition_id);
   db.query(
     `
     INSERT INTO signs (comment,user_id,petition_id) VALUES($1,$2,$3)
-    `,[req.body.comment,req.user_id.user_id,petition_id])
+    `,[req.body.comment ,req.user_id, petition_id])
     .then((result) => {
-      db.query("UPDATE petitions SET signed=signed+1").then(result=>{
+      db.query("UPDATE petitions SET signed=signed+1 WHERE id=$1",[petition_id]).then(result=>{
         res.redirect("/petition?id=" + petition_id);
       })
   });

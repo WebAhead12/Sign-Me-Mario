@@ -1,6 +1,5 @@
 const db = require("../database/connection");
 const path = require("path");
-const jwt = require("jsonwebtoken");
 
 
 const get = (req, res) => {
