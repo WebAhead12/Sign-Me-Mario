@@ -2,9 +2,11 @@ const db = require("../database/connection");
 const path = require("path");
 
 const get = (req, res) => {
-  console.log(req.params.petition_id);
   const petition_id = req.params.petition_id;
-  db.query(`SELECT * FROM petitions WHERE id = $1`, [petition_id]).then(
+  db.query(`SELECT petitions.*,users.name
+  FROM petitions INNER JOIN users
+  ON petitions.user_id = users.id
+  AND $1 = petitions.id`, [petition_id]).then(
     (result) => {
       res.send(result.rows);
     }
