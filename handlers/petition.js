@@ -11,6 +11,8 @@ const get = (req, res) => {
   );
 };
 
-const post = (req, res) => {};
+const showURL = (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "front-end", "petition", "petition.html"));
+};
 
-module.exports = { get, post };
+module.exports = { get, showURL };

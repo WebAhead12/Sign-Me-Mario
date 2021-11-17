@@ -9,8 +9,11 @@ router.get("/all-petitions", handlers.home.all);
 router.use(express.static(path.join(__dirname, "front-end", "index")));
 router.get("/create-petitions", handlers.create.get);
 router.post("/create-petitions", handlers.create.post);
+
 router.get("/p/:petition_id", handlers.petition.get);
-router.post("/petitions", handlers.petition.post);
-router.post("/sign-in", handlers.petition.post);
+router.get("/petition", handlers.petition.showURL);
+router.use(express.static(path.join(__dirname, "front-end", "petition")));
+// router.post("/sign-in", handlers.authenticate.signin);
+
 
 module.exports = router;
