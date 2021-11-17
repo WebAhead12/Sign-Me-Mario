@@ -1,13 +1,12 @@
 const db = require("../database/connection");
 const path = require("path");
 
-
-const showHTML = (req,res) => {
-    res.sendFile(path.join(__dirname, "..", "front-end", "authenticate", "authenticate.html"));
-}
-
-const register_post = (req,res) => {
-
+const showHTML = (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "front-end", "authenticate", "authenticate.html")
+  );
+};
+const register_post = (req, res) => {
     db.query("INSERT INTO users(name,username,password,email) VALUES($1,$2,$3,$4) RETURNING id, username; ",
     [req.body.name,req.body.username,req.body.password,req.body.email])
     .then((result) => res.next())
@@ -26,7 +25,6 @@ const log_in_post = (req,res) => {
             res.redirect("/authenticate?error=incorrect");
         }
     })
-
 }
 
 module.exports = {showHTML,register_post,log_in_post}
