@@ -1,11 +1,26 @@
 const data = new URLSearchParams(window.location.href.split("?")[1]);
 const id = data.get("id");
-console.log(id)
+const petition = document.querySelector(".petition");
+
 fetch(`/p/${id}`)
   .then((response) => {
     if (!response.ok) throw new Error(response.status);
     return response.json();
   })
   .then((json) => {
-    console.log(json)
+    console.log(json);
+    const objArray = json;
+    for (let obj of objArray) {
+      let child = petition.children;
+      child[0].innerHTML = obj.title;
+      child[1].innerHTML = "Owner: ".bold() + obj.name;
+      child[2].innerHTML = "Description: ".bold() + obj.content;
+      child[3].innerHTML = `<img src=${obj.image_link} width="250px" height="300px"></img>`;
+      child[4].value = `Goal:${obj.goal} `;
+      child[5].innerHTML = `<a href=/sign?id=${obj.id} >Sign</a>`;
+      //     allPetitions.appendChild(newPeti);
+    }
+  })
+  .catch((error) => {
+    console.error(error);
   });
