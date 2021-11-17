@@ -1,5 +1,7 @@
 const db = require("../database/connection");
 const path = require("path");
+const jwt = require("jsonwebtoken");
+
 
 const get = (req, res) => {
   res.sendFile(
@@ -8,14 +10,15 @@ const get = (req, res) => {
 };
 
 const post = (req, res) => {
+    console.log(req.user_id)
   db.query(
-    "INSERT INTO petitions(title,content,goal,image_link) VALUES($1,$2,$3,$4) RETURNING id",
+    "INSERT INTO petitions(title,content,goal,image_link,user_id) VALUES($1,$2,$3,$4,$5) RETURNING id",
     [
       req.body.title,
       req.body.content,
       req.body.goal,
       req.body.image_link,
-      user_id,
+      req.user_id,
     ]
   )
     .then((result) => {
