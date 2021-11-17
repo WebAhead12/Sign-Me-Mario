@@ -20,6 +20,7 @@ router.use(express.static(path.join(__dirname, "front-end", "petition")));
 router.get("/authenticate", handlers.authenticate.showHTML);
 router.post("/log-in",handlers.authenticate.log_in_post);
 router.post("/register", handlers.authenticate.register_post);
+router.use(express.static(path.join(__dirname, "front-end", "authenticate")));
 
 
 
