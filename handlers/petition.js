@@ -1,6 +1,6 @@
 const db = require("../database/connection");
 const path = require("path");
-
+//clicking on a petition to show
 const get = (req, res) => {
   const petition_id = req.params.petition_id;
   db.query(
@@ -13,25 +13,27 @@ const get = (req, res) => {
     res.send(result.rows);
   });
 };
-
+//sending the petition.html
 const showURL = (req, res) => {
   res.sendFile(
     path.join(__dirname, "..", "front-end", "petition", "petition.html")
   );
 };
-// cookie petition id
-
+//signing the petition
 const sign = (req, res) => {
   const petition_id = req.body.petition_id;
   console.log("Pettion id: " + req.body.petition_id);
   db.query(
     `
     INSERT INTO signs (comment,user_id,petition_id) VALUES($1,$2,$3)
-    `,[req.body.comment ,req.user_id, petition_id])
-    .then((result) => {
-      db.query("UPDATE petitions SET signed=signed+1 WHERE id=$1",[petition_id]).then(result=>{
-        res.redirect("/petition?id=" + petition_id);
-      })
+    `,
+    [req.body.comment, req.user_id, petition_id]
+  ).then((result) => {
+    db.query("UPDATE petitions SET signed=signed+1 WHERE id=$1", [
+      petition_id,
+    ]).then((result) => {
+      res.redirect("/petition?id=" + petition_id);
+    });
   });
 };
 module.exports = { get, showURL, sign };

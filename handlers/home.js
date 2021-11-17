@@ -1,10 +1,10 @@
 const db = require("../database/connection");
 const path = require("path");
-
+//home html page
 const get = (req, res) => {
   res.sendFile(path.join(__dirname, "..", "front-end", "index", "index.html"));
 };
-
+//sends all petitions to the index.js
 const all = (req, res) => {
   db.query(
     `
