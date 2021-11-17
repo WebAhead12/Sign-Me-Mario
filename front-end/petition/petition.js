@@ -16,9 +16,8 @@ fetch(`/p/${id}`)
       child[1].innerHTML = "Owner: ".bold() + obj.name;
       child[2].innerHTML = "Description: ".bold() + obj.content;
       child[3].innerHTML = `<img src=${obj.image_link} width="250px" height="300px"></img>`;
-      child[4].value = `Goal:${obj.goal} `;
+      child[4].textContent = `Goal:${obj.signed} out of ${obj.goal}`;
       child[5].innerHTML = `<a href=/sign?id=${obj.id} >Sign</a>`;
-      //     allPetitions.appendChild(newPeti);
     }
   })
   .catch((error) => {
