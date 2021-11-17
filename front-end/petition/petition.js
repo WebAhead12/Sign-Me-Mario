@@ -1,6 +1,8 @@
 const data = new URLSearchParams(window.location.href.split("?")[1]);
 const id = data.get("id");
 const petition = document.querySelector(".petition");
+const petitionId = document.getElementById("petition_id");
+
 
 fetch(`/p/${id}`)
   .then((response) => {
@@ -8,6 +10,7 @@ fetch(`/p/${id}`)
     return response.json();
   })
   .then((json) => {
+    petitionId.value = id;
     console.log(json);
     const objArray = json;
     for (let obj of objArray) {
@@ -17,7 +20,7 @@ fetch(`/p/${id}`)
       child[2].innerHTML = "Description: ".bold() + obj.content;
       child[3].innerHTML = `<img src=${obj.image_link} width="250px" height="300px"></img>`;
       child[4].textContent = `Goal:${obj.signed} out of ${obj.goal}`;
-      child[5].innerHTML = `<a href=/sign?id=${obj.id} >Sign</a>`;
+      
     }
   })
   .catch((error) => {

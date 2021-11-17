@@ -1,8 +1,5 @@
 const db = require("../database/connection");
 const path = require("path");
-const jwt = require("jsonwebtoken");
-const SECRET = "asdjgasgdhbrkj%&$*t";
-const verifyToken = require("../middleware/verifyToken");
 
 const get = (req, res) => {
   if (!req.user_id) {

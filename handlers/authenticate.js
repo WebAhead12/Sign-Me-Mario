@@ -14,20 +14,14 @@ const register_post = (req, res) => {
     db.query("SELECT username from USERS WHERE username=$1",[req.body.username])
     .then(result=>{
         if(result.rows[0]){
-            res.redirect("/authenticate?message=dumbass");
+            res.redirect("/authenticate?message=Username_already_exists_please_user_a_different_name_or_login");
         } else {
             db.query("INSERT INTO users(name,username,password,email) VALUES($1,$2,$3,$4); ",
             [req.body.name,req.body.username,req.body.password,req.body.email]).then(result=>{
-                res.redirect("/authenticate?message=success");
+                res.redirect("/authenticate?message=Account_registered_please_login");
             })
         }
     }).catch(console.error)
-
-
-    // db.query("INSERT INTO users(name,username,password,email) VALUES($1,$2,$3,$4) RETURNING id, username; ",
-    // [req.body.name,req.body.username,req.body.password,req.body.email])
-    // .then((result) => res.next())
-    // .catch((error)=>console.error(error));
 }
 
 const log_in_post = (req,res) => {
@@ -39,7 +33,7 @@ const log_in_post = (req,res) => {
             res.cookie("user_id", token, { maxAge: 6000000 });
             res.redirect("/")
         } else {
-            res.redirect("/authenticate?error=incorrect");
+            res.redirect("/authenticate?message=Incorrect_password_please_try_again");
         }
     })
     .catch(console.error);
