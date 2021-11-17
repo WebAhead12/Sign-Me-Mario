@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="create.css">
+</head>
+<body>
+    <form
+    action="/create-petition"
+    method="POST"
+    class="createPetition">
+    <dev class="petitionTitle">
+      <label for="title">Create petition</label>
+    </dev>
+    <br />
+    <label for="content">Description:</label>
+    <input
+      class="petitionContent"
+      id="content"
+      name="content"
+      placeholder="Content..."
+      required
+    /><br />
+    <label for="goal">Goal:</label>
+    <input
+    class="goalInput"
+    id="goal"
+    name="goal"
+    type="number"
+    placeholder="Sign goal..."
+    required/>
+    <br>
+    <label for="goal">Image Link(Optional but recommended):</label>
+    <input
+    class="imageInput"
+    id="image_link"
+    name="image_link"
+    placeholder="Link..."
+    required/>
+    <br>
+  <button class="createButtonContainer" type="submit">
+    <i class="createButton">Submit</i>
+  </button>
+</form>
+    
+    <script src="create.js"></script>
+</body>
+</html>
