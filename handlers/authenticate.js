@@ -10,7 +10,7 @@ const showHTML = (req, res) => {
 
 const register_post = (req, res) => {
 
-    const test = db.query("SELECT username from USERS WHERE username=$1",[req.body.username])
+    db.query("SELECT username from USERS WHERE username=$1",[req.body.username])
     .then(result=>{
         if(result.rows[0]){
             res.redirect("/authenticate?message=dumbass");
@@ -21,8 +21,6 @@ const register_post = (req, res) => {
             })
         }
     }).catch(console.error)
-
-    console.log(test)
 
 
     // db.query("INSERT INTO users(name,username,password,email) VALUES($1,$2,$3,$4) RETURNING id, username; ",
