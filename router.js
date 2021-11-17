@@ -20,6 +20,7 @@ router.use(express.static(path.join(__dirname, "front-end", "create")));
 
 router.get("/p/:petition_id", verifyToken,handlers.petition.get);
 router.get("/petition", verifyToken,handlers.petition.showURL);
+router.post("/sign-petition/:petition_id",verifyToken,handlers.petition.sign);
 router.use(express.static(path.join(__dirname, "front-end", "petition")));
 
 router.get("/authenticate", handlers.authenticate.showHTML);
@@ -28,6 +29,9 @@ router.post("/log-in",handlers.authenticate.log_in_post);
 router.post("/log-out",handlers.authenticate.log_out_get);
 router.use(express.static(path.join(__dirname, "front-end", "authenticate")));
 
+router.get("/cookieId", verifyToken, (req,res)=>{
+    res.json({user_id: req.user_id});
+})
 
 
 module.exports = router;

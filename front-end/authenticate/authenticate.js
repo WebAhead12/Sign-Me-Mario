@@ -1,20 +1,8 @@
-let error = window.location.search;
-
-if (error == "?error=incorrect") {
+let error = new URLSearchParams(window.location.search.split("?")[1]);
+console.log(error.get("message"))
+if (error.has("message")) {
     setTimeout(() => {
-      alert("Incorrect Login Information!");
+      alert(error.get("message").split("_").join(" "));
     }, 100);
 }
-if (error == "?message=dumbass") {
-    setTimeout(() => {
-      alert("Username already exists!");
-    }, 100);
-}
-if (error == "?message=success") {
-    setTimeout(() => {
-      alert("Account created please log in!");
-    }, 100);
-}
-
-// if(error) window.location.href = "/authenticate"
 

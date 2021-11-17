@@ -15,7 +15,12 @@
       <div class="content"></div>
       <div class="image_link"></div>
       <div class="goal"></div>
-      <div class="sign-me"></div>
+      <div class="sign-me">
+        <form method="post" action="/sign-petition">
+          <label for="comment">Comment:(optional)</label><input type="text" name="comment" id = "comment">
+          <button type="submit">Sign</button>
+        </form>
+      </div>
     </div>
     <script src="petition.js"></script>
   </body>

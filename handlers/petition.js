@@ -24,13 +24,13 @@ const sign = (req, res) => {
   const petition_id = req.params.petition_id;
   console.log(req.params);
   db.query(
-    `SELECT petitions.signed,users.name
-  FROM petitions INNER JOIN users
-  ON petitions.user_id = users.id
-  AND $1 = petitions.id`,
-    [petition_id]
-  ).then((result) => {
-    res.send(result.rows);
+    `
+    INSERT INTO signs (comment,user_id,petition_id) VALUES($1,$2,$3)
+    `,[req.body.comment,req.user_id.user_id,petition_id])
+    .then((result) => {
+      db.query("UPDATE petitions SET signed=signed+1").then(result=>{
+        res.redirect("/petition?id=" + petition_id);
+      })
   });
 };
 module.exports = { get, showURL, sign };
