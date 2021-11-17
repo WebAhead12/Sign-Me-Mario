@@ -1,6 +1,21 @@
 const clonePotetion = document.querySelector(".petitions").cloneNode(true);
 document.querySelector(".petitions").remove();
-allPetitions = document.querySelector(".allPetitions");
+const allPetitions = document.querySelector(".allPetitions");
+const logOut = document.querySelector(".logOut");
+const logIn = document.querySelector(".logIn");
+const welcome = document.querySelector(".welcome");
+
+if (document.cookie) {
+  logOut.style.display = "block";
+  logIn.style.display = "none";
+  welcome.innerHTML = "You are logged In";
+}
+if (!document.cookie) {
+  logOut.style.display = "none";
+  logIn.style.display = "block";
+  welcome.innerHTML = "";
+}
+
 fetch("/all-petitions")
   .then((response) => {
     if (!response.ok) throw new Error(response.status);
@@ -34,3 +49,10 @@ fetch("/all-petitions")
   // .then((json) => {
   //   console.log(json.user_id)
   // })
+  
+logOut.addEventListener("click", () => {
+  document.cookie = "user_id= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+  logOut.style.display = "none";
+  logIn.style.display = "block";
+  welcome.innerHTML = "";
+});
