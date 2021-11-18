@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const SECRET = "asdjgasgdhbrkj%&$*t";
 const verifyToken = require("./middleware/verifyToken");
 const handlers = require("./handlers"); //Automatically requires /handlers/index.js
 
