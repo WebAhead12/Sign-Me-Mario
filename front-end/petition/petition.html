@@ -9,22 +9,21 @@
     <title>Document</title>
   </head>
   <body>
-    <a class="home" href="/">All petitions</a>
+    <a class="home button" href="/">All petitions</a>
     <div class="petition">
-      <h1 class="petitonName"></h1>
-      <div class="title"></div>
-      <div class="content"></div>
       <div class="image_link"></div>
-      <div class="goal"></div>
-      <div class="sign-me">
-        <form method="post" action="/sign-petition">
-          <label for="comment">Comment:(optional)</label>
-          <input type="text" name="comment" id = "comment">
-          <input type="hidden" name="petition_id" id="petition_id">
-          <button type="submit">Sign</button>
-        </form>
-      </div>
+        <div class="title"></div>
+        <div class="owner"></div>
+        <div class="content"></div>
+        <div class="goal"></div>
     </div>
+    <div class="sign-me">
+      <form class="form" method="post" action="/sign-petition">
+        <label for="comment">Comment:(optional)</label>
+        <input type="text" name="comment" id="comment" />
+        <input type="hidden" name="petition_id" id="petition_id" />
+        <button type="submit">Sign</button>
+      </form>
     <script src="petition.js"></script>
   </body>
 </html>
