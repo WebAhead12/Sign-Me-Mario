@@ -32,20 +32,20 @@ const register_post = (req, res) => {
 const log_in_post = (req, res) => {
   db.query("SELECT password,id FROM users WHERE username=$1", [
     req.body.username,
-  ])
-    .then((results) => {
+  ]).then((results) => {
       //checking if the password is correct
-      if (results.rows[0].password == req.body.password) {
-        const token = jwt.sign(results.rows[0].id, SECRET);
-        res.cookie("user_id", token, { maxAge: 6000000 });
-        res.redirect("/");
+      console.log(results.rows)
+      if(!results.rows[0]) {
+        res.redirect("/authenticate?message=Username_does_not_exist");
       } else {
-        //if not redircts it
-        res.redirect(
-          "/authenticate?message=Incorrect_password_please_try_again"
-        );
+        if (results.rows[0].password == req.body.password) {
+          const token = jwt.sign(results.rows[0].id, SECRET);
+          res.cookie("user_id", token, { maxAge: 6000000 });
+          res.redirect("/");
+        } else res.redirect("/authenticate?message=Incorrect_password_please_try_again");
       }
     })
+    
     .catch(console.error);
 };
 

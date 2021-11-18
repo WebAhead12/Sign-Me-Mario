@@ -12,7 +12,7 @@ fetch(`/p/${id}`)
   //inserts data to the petiton
   .then((json) => {
     petitionId.value = id;
-    console.log(json);
+    console.log(petitionId.value);
     const objArray = json;
     for (let obj of objArray) {
       let child = petition.children;

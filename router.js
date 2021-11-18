@@ -8,8 +8,8 @@ const handlers = require("./handlers"); //Automatically requires /handlers/index
 router.use(cookieParser());
 router.use(express.urlencoded({ extended: false }));
 //index handler
-router.get("/", handlers.home.get);
-router.get("/all-petitions", handlers.home.all);
+router.get("/",handlers.home.get);
+router.get("/all-petitions",handlers.home.all);
 //returns the index front end
 router.use(express.static(path.join(__dirname, "front-end", "index")));
 //creating a new petition handler
