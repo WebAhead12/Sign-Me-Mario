@@ -30,10 +30,11 @@ fetch("/all-petitions")
       //gives each petition name and title
       let newPeti = clonePotetion.cloneNode("true");
       let child = newPeti.children;
-      child[0].innerHTML = `<a href=/petition?id=${obj.id}>${obj.title}</a>`;
+      child[0].innerHTML =
+        `<a href=/petition?id=${obj.id}>${obj.title}</a>`.bold();
       child[1].innerHTML = "Owner: ".bold() + obj.name;
       child[2].innerHTML = "Description: ".bold() + obj.content;
-      child[3].innerHTML = `<img src=${obj.image_link} width="250px" height="300px"></img>`;
+      child[3].innerHTML = `<img src=${obj.image_link} width="200px" height="250x"></img>`;
       child[4].textContent = `Goal:${obj.signed} out of ${obj.goal}`;
 
       allPetitions.appendChild(newPeti);

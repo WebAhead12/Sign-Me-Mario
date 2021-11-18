@@ -4,79 +4,81 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="authenticate.css" />
+
     <title>Authenticate</title>
   </head>
-   <body>
-    <form
-    action="/log-in"
-    method="POST"
-    class="loginContainer authenticate">
-    <dev class="loginTitle">
-      <label for="username">Log-in</label>
-    </dev>
-    <br />
-    <input
-      class="loginInput"
-      id="usernameL"
-      name="username"
-      placeholder="username"
-      required
-    /><br />
-    <input
-    class="loginInput"
-    id="passwordL"
-    name="password"
-    type="password"
-    placeholder="Enter your password"
-    required/>
-  <button class="loginButtonContainer" type="submit">
-    <i class="authenticateButton">Log-in</i>
-  </button>
-</form>
-  </div><br />
-
-    <div class="register">
-      <form
-        action="/register"
-        method="POST"
-        class="registerContainer authenticate"
-      >
-        <dev class="registerTitle">
-          <label class="registerLabel" for="username">Register</label>
+  <body>
+    <div class="form">
+      <form action="/log-in" method="POST" class="login-form">
+        <dev class="loginTitle">
+          <label for="username">Log-in</label>
         </dev>
         <br />
         <input
           class="loginInput"
-          id="usernameR"
+          id="usernameL"
           name="username"
           placeholder="username"
-          required
-        />
-        <br /><input
-          class="loginInput"
-          id="nameR"
-          name="name"
-          placeholder="name"
           required
         /><br />
         <input
           class="loginInput"
-          id="emailR"
-          name="email"
-          placeholder="email"
-          required
-        /><br /><input
-          class="loginInput"
-          id="passwordR"
+          id="passwordL"
           name="password"
           type="password"
-          placeholder="password"
+          placeholder="Enter your password"
           required
         />
-
-        <button class="authenticateButton" type="submit">Register</button>
+        <button class="loginButtonContainer" type="submit">
+          <i class="authenticateButton">Log-in</i>
+        </button>
       </form>
+      <br />
+
+      <div class="register-form">
+        <form
+          action="/register"
+          method="POST"
+          class="registerContainer authenticate"
+        >
+          <dev class="registerTitle">
+            <label class="registerLabel" for="username">Register</label>
+          </dev>
+          <br />
+          <input
+            class="loginInput"
+            id="usernameR"
+            name="username"
+            placeholder="username"
+            required
+          />
+          <br /><input
+            class="loginInput"
+            id="nameR"
+            name="name"
+            placeholder="name"
+            required
+          /><br />
+          <input
+            class="loginInput"
+            id="emailR"
+            name="email"
+            placeholder="email"
+            required
+          /><br /><input
+            class="loginInput"
+            id="passwordR"
+            name="password"
+            type="password"
+            placeholder="password"
+            required
+          />
+
+          <button class="authenticateButton" type="submit">Register</button>
+        </form>
+      </div>
     </div>
-  <script src="authenticate.js"></script>
- </body>
+    <script src="authenticate.js"></script>
+  </body>
 </html>

@@ -1,0 +1,7 @@
+body {
+  background-color: burlywood;
+}
+.petition {
+  width: 80%;
+  border: 2px solid burrgb(233, 183, 119);
+}
