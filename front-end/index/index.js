@@ -5,6 +5,7 @@ const logOut = document.querySelector(".logOut");
 const logIn = document.querySelector(".logIn");
 const welcome = document.querySelector(".welcome");
 
+
 //if user is signed in show log-out
 if (document.cookie) {
   logOut.style.display = "block";
@@ -16,6 +17,8 @@ if (!document.cookie) {
   logIn.style.display = "block";
   welcome.innerHTML = "";
 }
+
+
 //fetches the data of all the petitions that are in
 fetch("/all-petitions")
   .then((response) => {
@@ -37,7 +40,12 @@ fetch("/all-petitions")
       child[3].innerHTML = `<img src=${obj.image_link} width="200px" height="250x"></img>`;
       child[4].textContent = `Goal:${obj.signed} out of ${obj.goal}`;
 
-      allPetitions.appendChild(newPeti);
+
+      allPetitions.appendChild(newPeti); 
+      newPeti.addEventListener("click",(event)=>{
+        window.location.href = `http://localhost:3000/petition?id=${obj.id}`
+      })
+      newPeti.style.cursor = "pointer";
     }
   })
   .catch((error) => {

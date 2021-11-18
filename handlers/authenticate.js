@@ -2,6 +2,7 @@ const db = require("../database/connection");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const SECRET = "asdjgasgdhbrkj%&$*t";
+let username = "";
 
 //shows signing in/registering html
 const showHTML = (req, res) => {
@@ -41,6 +42,7 @@ const log_in_post = (req, res) => {
         if (results.rows[0].password == req.body.password) {
           const token = jwt.sign(results.rows[0].id, SECRET);
           res.cookie("user_id", token, { maxAge: 6000000 });
+          username = req.body.username;
           res.redirect("/");
         } else res.redirect("/authenticate?message=Incorrect_password_please_try_again");
       }
@@ -54,4 +56,8 @@ const log_out_get = (req, res) => {
   res.redirect("/");
 };
 
-module.exports = { showHTML, register_post, log_in_post, log_out_get };
+const get_username =  (req,res)=>{
+  res.json({username : username})
+}
+
+module.exports = { showHTML, register_post, log_in_post, log_out_get , get_username};
