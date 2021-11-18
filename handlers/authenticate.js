@@ -1,7 +1,9 @@
 const db = require("../database/connection");
 const path = require("path");
 const jwt = require("jsonwebtoken");
-const SECRET = "asdjgasgdhbrkj%&$*t";
+const dotenv = require("dotenv");
+dotenv.config();
+const SECRET = process.env.SECRET;
 let username = "";
 
 //shows signing in/registering html
@@ -33,10 +35,11 @@ const register_post = (req, res) => {
 const log_in_post = (req, res) => {
   db.query("SELECT password,id FROM users WHERE username=$1", [
     req.body.username,
-  ]).then((results) => {
+  ])
+    .then((results) => {
       //checking if the password is correct
-      console.log(results.rows)
-      if(!results.rows[0]) {
+      console.log(results.rows);
+      if (!results.rows[0]) {
         res.redirect("/authenticate?message=Username_does_not_exist");
       } else {
         if (results.rows[0].password == req.body.password) {
@@ -44,10 +47,13 @@ const log_in_post = (req, res) => {
           res.cookie("user_id", token, { maxAge: 6000000 });
           username = req.body.username;
           res.redirect("/");
-        } else res.redirect("/authenticate?message=Incorrect_password_please_try_again");
+        } else
+          res.redirect(
+            "/authenticate?message=Incorrect_password_please_try_again"
+          );
       }
     })
-    
+
     .catch(console.error);
 };
 
@@ -56,8 +62,14 @@ const log_out_get = (req, res) => {
   res.redirect("/");
 };
 
-const get_username =  (req,res)=>{
-  res.json({username : username})
-}
+const get_username = (req, res) => {
+  res.json({ username: username });
+};
 
-module.exports = { showHTML, register_post, log_in_post, log_out_get , get_username};
+module.exports = {
+  showHTML,
+  register_post,
+  log_in_post,
+  log_out_get,
+  get_username,
+};
