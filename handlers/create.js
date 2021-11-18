@@ -15,7 +15,7 @@ const get = (req, res) => {
 //posting the create and adding it to the petitions table
 const post = (req, res) => {
   db.query(
-    "INSERT INTO petitions(title,user_id,content,goal,image_link) VALUES($1,$2,$3,$4) RETURNING id",
+    "INSERT INTO petitions(title,user_id,content,goal,image_link) VALUES($1,$2,$3,$4,$5) RETURNING id",
     [req.body.title, req.user_id,req.body.content, req.body.goal, req.body.image_link] //add user_id cookie
   )
     .then((result) => {
