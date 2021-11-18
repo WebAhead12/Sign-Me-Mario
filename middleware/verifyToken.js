@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const SECRET = "asdjgasgdhbrkj%&$*t";
-const path = require("path");
 
 function verifyToken(req, res, next) {
   const user_idToken = req.cookies.user_id;

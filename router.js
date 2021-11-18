@@ -22,6 +22,7 @@ router.get("/petition", verifyToken, handlers.petition.showURL);
 //sign  petition
 router.post("/sign-petition", verifyToken, handlers.petition.sign);
 router.use(express.static(path.join(__dirname, "front-end", "petition")));
+
 router.get("/authenticate", handlers.authenticate.showHTML);
 router.post("/register", handlers.authenticate.register_post);
 router.post("/log-in", handlers.authenticate.log_in_post);
