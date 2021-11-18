@@ -11,7 +11,7 @@ const showHTML = (req, res) => {
   );
 };
 //registering taking data from the html form and inserting it into users table
-const register_post = (req, res) => {
+const registerPost = (req, res) => {
   db.query("SELECT username from USERS WHERE username=$1", [req.body.username])
     .then((result) => {
       if (result.rows[0]) {
@@ -30,7 +30,7 @@ const register_post = (req, res) => {
     .catch(console.error);
 };
 //loging in
-const log_in_post = (req, res) => {
+const logInPost = (req, res) => {
   db.query("SELECT password,id FROM users WHERE username=$1", [
     req.body.username,
   ]).then((results) => {
@@ -51,13 +51,10 @@ const log_in_post = (req, res) => {
     .catch(console.error);
 };
 
-const log_out_get = (req, res) => {
+const logOutGet = (req, res) => {
   res.clearCookie("user_id");
   res.redirect("/");
 };
 
-const get_username =  (req,res)=>{
-  res.json({username : username})
-}
 
-module.exports = { showHTML, register_post, log_in_post, log_out_get , get_username};
+module.exports = { showHTML, registerPost, logInPost, logOutGet};

@@ -6,7 +6,7 @@ const verifyToken = require("./middleware/verifyToken");
 const handlers = require("./handlers"); //Automatically requires /handlers/index.js
 
 router.use(cookieParser());
-router.use(express.urlencoded({ extended: false }));
+
 //index handler
 router.get("/",handlers.home.get);
 router.get("/all-petitions",handlers.home.all);
@@ -22,9 +22,9 @@ router.post("/sign-petition", verifyToken, handlers.petition.sign);
 router.use(express.static(path.join(__dirname, "front-end", "petition")));
 //authentication handler
 router.get("/authenticate", handlers.authenticate.showHTML);
-router.post("/register", handlers.authenticate.register_post);
-router.post("/log-in", handlers.authenticate.log_in_post);
-router.post("/log-out", handlers.authenticate.log_out_get);
+router.post("/register", handlers.authenticate.registerPost);
+router.post("/log-in", handlers.authenticate.logInPost);
+router.post("/log-out", handlers.authenticate.logOutGet);
 router.use(express.static(path.join(__dirname, "front-end", "authenticate")));
 //get cookie information route used in front end
 router.get("/cookieId", verifyToken, (req, res) => {
