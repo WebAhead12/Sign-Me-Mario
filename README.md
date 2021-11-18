@@ -12,23 +12,23 @@ Made by [Hala](https://github.com/halakhamis07) and [George](https://github.com/
 
 - / => (index.html) petitions with title and desc
 - GET /all-petitions => (json) returns all petitions data
-- GET /create-petitions => (create.html) create a new petition
-- POST /create-petitions => redirects to GET /petition
+- GET /create-petition => (create.html) create a new petition
+- POST /create-petition => redirects to GET /petition
 - GET /petition => (petition.html)
-- GET /getpetition => (json)
+- GET /p/:petition_id => (json)
 - POST /sign-petition => stays on the same page
 - GET /authenticate => (autheticate.html)
 - POST /register => redirects to GET /sign-in
-- POST /sign-in => redirects to GET /
-- /profile optional(if we have time)
+- POST /login-in => redirects to GET /
+- GET /log-out => redirects to GET / authenticate
 
 ## FOLDER STRUCTURE
 
 - Main folder:
   - database
+    - connection.js
     - init.sql
-  - middlewares
-    - checkAuth.js
+  - middleware
     - verifyToken.js
   - front-end
     - index
@@ -47,13 +47,11 @@ Made by [Hala](https://github.com/halakhamis07) and [George](https://github.com/
       - petition.html
       - petition.js
       - petition.css
-    - profile(optional)
   - handlers
     - index.js
     - create.js
     - authenticate.js
     - petition.js
-    - profile.js
   - server.js
   - router.js
   - package.json
