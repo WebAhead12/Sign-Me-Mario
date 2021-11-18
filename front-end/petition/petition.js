@@ -27,7 +27,7 @@ fetch(`/p/${id}`)
       owner.innerHTML = "Owner: ".bold() + obj.name;
       content.innerHTML = "Description: ".bold() + obj.content;
       image_link.innerHTML = `<img src=${obj.image_link} width="250px" height="300px"></img>`;
-      goal.textContent = `Goal:${obj.signed} out of ${obj.goal}`;
+      goal.textContent = `Goal: ${obj.signed} / ${obj.goal}`;
     }
   })
   .catch((error) => {
